@@ -1,0 +1,293 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Undangan Pernikahan</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-snap-type: y mandatory;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #222;
+            color: white;
+            overflow-x: hidden;
+        }
+
+        /* Sebelum tombol dibuka, halaman terkunci */
+        body.belum-dibuka {
+            overflow: hidden;
+            height: 100vh;
+            height: 100svh;
+        }
+
+        body.sudah-dibuka {
+            overflow-x: hidden;
+            overflow-y: auto;
+        }
+
+        /* Satu video memenuhi satu halaman */
+        .halaman {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            height: 100svh;
+            overflow: hidden;
+            background: #222;
+            scroll-snap-align: start;
+            scroll-snap-stop: always;
+        }
+
+        /* Video Canva */
+        .video-latar {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            background: #222;
+        }
+
+        /* Cover */
+        .cover-isi {
+            position: absolute;
+            z-index: 2;
+            top: 65%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: min(90%, 340px);
+            padding: 16px;
+            text-align: center;
+            color: white;
+            background: rgba(45, 32, 24, 0.72);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            border-radius: 15px;
+        }
+
+        .cover-isi p {
+            font-size: 13px;
+            margin-bottom: 8px;
+        }
+
+        .cover-isi h2 {
+            font-size: 22px;
+            margin-bottom: 12px;
+            overflow-wrap: anywhere;
+        }
+
+        .tombol {
+            display: inline-block;
+            padding: 11px 22px;
+            border: 1px solid white;
+            border-radius: 25px;
+            color: white;
+            background: transparent;
+            text-decoration: none;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .tombol:hover {
+            background: white;
+            color: #493a30;
+        }
+
+        /* Navigasi bawah */
+        .navigasi {
+            position: fixed;
+            z-index: 10;
+            bottom: 12px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 4px;
+            padding: 7px;
+            background: rgba(0, 0, 0, 0.8);
+            border: 1px solid white;
+            border-radius: 35px;
+        }
+
+        .navigasi a {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            border-radius: 50%;
+            font-size: 20px;
+        }
+
+        .navigasi a:hover {
+            background: #666;
+        }
+
+        /* Navigasi disembunyikan sebelum undangan dibuka */
+        body.belum-dibuka .navigasi {
+            display: none;
+        }
+
+        @media (max-width: 400px) {
+            .cover-isi {
+                top: 3%;
+                padding: 12px;
+            }
+
+            .cover-isi h2 {
+                font-size: 19px;
+            }
+
+            .navigasi a {
+                width: 35px;
+                height: 35px;
+            }
+        }
+    </style>
+</head>
+
+<body class="belum-dibuka">
+
+    <!-- 1. COVER -->
+    <section class="halaman" id="cover">
+        <video class="video-latar"
+               autoplay muted loop playsinline preload="auto">
+            <source src="1.mp4" type="video/mp4">
+        </video>
+
+        <div class="cover-isi">
+            <p>Kepada Yth.</p>
+            <h2 id="namaTamu">OLIVIA MARCHSELLIATY</h2>
+
+            <a href="#pembukaan"
+               class="tombol"
+               id="bukaUndangan">
+                Buka Undangan
+            </a>
+        </div>
+    </section>
+
+    <!-- 2. VIDEO CANVA KEDUA -->
+    <section class="halaman" id="pembukaan">
+        <video class="video-latar"
+               muted playsinline preload="auto">
+            <source src="2.mp4" type="video/mp4">
+        </video>
+    </section>
+
+    <!-- 3. VIDEO CANVA KETIGA -->
+    <section class="halaman" id="pengantin">
+        <video class="video-latar"
+               muted playsinline preload="metadata">
+            <source src="3.mp4" type="video/mp4">
+        </video>
+    </section>
+
+    <!-- 4. VIDEO CANVA KEEMPAT -->
+    <section class="halaman" id="acara">
+        <video class="video-latar"
+               muted playsinline preload="metadata">
+            <source src="4.mp4" type="video/mp4">
+        </video>
+    </section>
+
+    <!-- 5. VIDEO CANVA KELIMA -->
+    <section class="halaman" id="rsvp">
+        <video class="video-latar"
+               muted playsinline preload="metadata">
+            <source src="5.mp4" type="video/mp4">
+        </video>
+    </section>
+
+    <!-- 6. VIDEO CANVA KEENAM -->
+    <section class="halaman" id="gift">
+        <video class="video-latar"
+               muted playsinline preload="metadata">
+            <source src="6.mp4" type="video/mp4">
+        </video>
+    </section>
+
+    <!-- NAVIGASI: 6 BAGIAN -->
+    <nav class="navigasi">
+        <a href="#cover" title="Cover">⌂</a>
+        <a href="#pembukaan" title="Pembukaan">♡</a>
+        <a href="#pengantin" title="Pengantin">♥</a>
+        <a href="#acara" title="Acara">▦</a>
+        <a href="#rsvp" title="RSVP">✉</a>
+        <a href="#gift" title="Gift">♧</a>
+    </nav>
+
+    <script>
+        // Mengambil nama tamu dari URL.
+        // Contoh: index.html?to=Budi
+        const parameter = new URLSearchParams(window.location.search);
+        const namaTamu = parameter.get("to");
+
+        if (namaTamu) {
+            document.getElementById("namaTamu").textContent = namaTamu;
+        }
+
+        // Daftar seluruh video.
+        const semuaVideo = document.querySelectorAll(".video-latar");
+
+        // Putar video saat halamannya terlihat.
+        const pengamat = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                const video = entry.target;
+
+                if (entry.isIntersecting) {
+                    video.play().catch(function() {
+                        console.log("Browser membatasi pemutaran video.");
+                    });
+                } else {
+                    video.pause();
+                }
+            });
+        }, {
+            threshold: 0.5
+        });
+
+        semuaVideo.forEach(function(video) {
+            pengamat.observe(video);
+        });
+
+        // Tombol membuka undangan dan mengaktifkan scrolling.
+        document.getElementById("bukaUndangan").addEventListener(
+            "click", function(event) {
+                event.preventDefault();
+
+                document.body.classList.remove("belum-dibuka");
+                document.body.classList.add("sudah-dibuka");
+
+                // Pindah ke video kedua.
+                document.getElementById("pembukaan").scrollIntoView({
+                    behavior: "smooth"
+                });
+
+                // Mulai video pembukaan.
+                const videoKedua =
+                    document.querySelector("#pembukaan video");
+
+                videoKedua.currentTime = 0;
+
+                videoKedua.play().catch(function() {
+                    console.log("Video dapat dicoba diputar kembali.");
+                });
+            }
+        );
+    </script>
+
+</body>
+</html>
